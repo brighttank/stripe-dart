@@ -61,7 +61,7 @@ class CreateCheckoutSessionRequest {
   /// If multiple payment methods are passed, Checkout will dynamically reorder
   /// them to prioritize the most relevant payment methods based on the
   /// customer’s location and other characteristics.
-  final List<PaymentMethodType> paymentMethodTypes;
+  final List<PaymentMethodType>? paymentMethodTypes;
 
   /// A unique string to reference the Checkout Session. This can be a customer
   /// ID, a cart ID, or similar, and can be used to reconcile the Session with

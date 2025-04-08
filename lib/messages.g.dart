@@ -786,8 +786,8 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
     CreateCheckoutSessionRequest(
       successUrl: json['success_url'] as String,
       cancelUrl: json['cancel_url'] as String,
-      paymentMethodTypes: (json['payment_method_types'] as List<dynamic>)
-          .map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
+      paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
           .toList(),
       mode: $enumDecodeNullable(_$SessionModeEnumMap, json['mode']),
       uiMode: $enumDecodeNullable(_$UiModeEnumMap, json['ui_mode']),
@@ -825,9 +825,11 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
       'cancel_url': instance.cancelUrl,
       if (_$SessionModeEnumMap[instance.mode] case final value?) 'mode': value,
       if (_$UiModeEnumMap[instance.uiMode] case final value?) 'ui_mode': value,
-      'payment_method_types': instance.paymentMethodTypes
-          .map((e) => _$PaymentMethodTypeEnumMap[e]!)
-          .toList(),
+      if (instance.paymentMethodTypes
+              ?.map((e) => _$PaymentMethodTypeEnumMap[e]!)
+              .toList()
+          case final value?)
+        'payment_method_types': value,
       if (instance.clientReferenceId case final value?)
         'client_reference_id': value,
       if (instance.customerEmail case final value?) 'customer_email': value,
