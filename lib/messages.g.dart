@@ -145,6 +145,7 @@ CheckoutSession _$CheckoutSessionFromJson(Map<String, dynamic> json) =>
           .map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
           .toList(),
       clientReferenceId: json['client_reference_id'] as String?,
+      clientSecret: json['client_secret'] as String?,
       customer: json['customer'] as String?,
       paymentIntent: json['payment_intent'] as String?,
       status: json['status'] as String?,
@@ -164,6 +165,7 @@ Map<String, dynamic> _$CheckoutSessionToJson(CheckoutSession instance) =>
           .toList(),
       if (instance.status case final value?) 'status': value,
       if (instance.url case final value?) 'url': value,
+      if (instance.clientSecret case final value?) 'client_secret': value,
     };
 
 const _$PaymentMethodTypeEnumMap = {
@@ -784,8 +786,8 @@ const _$_RefundObjectEnumMap = {
 CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
         Map<String, dynamic> json) =>
     CreateCheckoutSessionRequest(
-      successUrl: json['success_url'] as String?,
       returnUrl: json['return_url'] as String?,
+      successUrl: json['success_url'] as String?,
       cancelUrl: json['cancel_url'] as String?,
       paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))

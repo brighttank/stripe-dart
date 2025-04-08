@@ -54,12 +54,14 @@ class CheckoutSession extends Message {
   final List<PaymentMethodType> paymentMethodTypes;
   final String? status;
   final String? url;
+  final String? clientSecret;
 
   CheckoutSession({
     required this.object,
     required this.id,
     required this.paymentMethodTypes,
     this.clientReferenceId,
+    this.clientSecret,
     this.customer,
     this.paymentIntent,
     this.status,
