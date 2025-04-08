@@ -112,7 +112,7 @@ class CreateCheckoutSessionRequest {
   CreateCheckoutSessionRequest({
     required this.successUrl,
     required this.cancelUrl,
-    required this.paymentMethodTypes,
+    this.paymentMethodTypes,
     this.mode,
     this.uiMode,
     this.clientReferenceId,
