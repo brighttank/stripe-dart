@@ -1,5 +1,16 @@
 part of '../../../messages.dart';
 
+enum UiMode {
+  /// The Checkout Session will be displayed using embedded components on your website
+  custom,
+
+  /// The Checkout Session will be displayed as an embedded form on your website.jj
+  embedded,
+
+  /// The Checkout Session will be displayed on a hosted page that customers will be redirected to.
+  hosted,
+}
+
 enum SessionMode {
   /// Accept one-time payments for cards, iDEAL, and more.
   payment,
@@ -35,6 +46,11 @@ class CreateCheckoutSessionRequest {
   /// mode. Pass subscription if the Checkout Session includes at least one
   /// recurring item.
   final SessionMode? mode;
+
+  /// The mode of the Checkout Session. Required when using prices or setup
+  /// mode. Pass subscription if the Checkout Session includes at least one
+  /// recurring item.
+  final UiMode? uiMode;
 
   /// A list of the types of payment methods (e.g., card) this Checkout Session
   /// can accept.
@@ -98,6 +114,7 @@ class CreateCheckoutSessionRequest {
     required this.cancelUrl,
     required this.paymentMethodTypes,
     this.mode,
+    this.uiMode,
     this.clientReferenceId,
     this.customerEmail,
     this.customer,
