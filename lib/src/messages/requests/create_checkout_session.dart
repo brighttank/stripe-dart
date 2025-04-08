@@ -33,14 +33,20 @@ enum BillingAddressCollection {
 /// https://stripe.com/docs/api/checkout/sessions/create
 @JsonSerializable()
 class CreateCheckoutSessionRequest {
+  /// The URL to redirect your customer back to after they authenticate or
+  /// cancel their payment on the payment method’s app or site. This parameter
+  /// is required if ui_mode is embedded or custom and redirect-based payment
+  /// methods are enabled on the session. complete. If you’d like access to the
+  final String? returnUrl;
+
   /// The URL to which Stripe should send customers when payment or setup is
   /// complete. If you’d like access to the Checkout Session for the successful
   /// payment, read more about it in the guide on fulfilling orders.
-  final String successUrl;
+  final String? successUrl;
 
   /// The URL the customer will be directed to if they decide to cancel payment
   /// and return to your website.
-  final String cancelUrl;
+  final String? cancelUrl;
 
   /// The mode of the Checkout Session. Required when using prices or setup
   /// mode. Pass subscription if the Checkout Session includes at least one
@@ -110,8 +116,9 @@ class CreateCheckoutSessionRequest {
   final SubscriptionData? subscriptionData;
 
   CreateCheckoutSessionRequest({
-    required this.successUrl,
-    required this.cancelUrl,
+    this.returnUrl,
+    this.successUrl,
+    this.cancelUrl,
     this.paymentMethodTypes,
     this.mode,
     this.uiMode,

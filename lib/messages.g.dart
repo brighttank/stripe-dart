@@ -784,8 +784,9 @@ const _$_RefundObjectEnumMap = {
 CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
         Map<String, dynamic> json) =>
     CreateCheckoutSessionRequest(
-      successUrl: json['success_url'] as String,
-      cancelUrl: json['cancel_url'] as String,
+      successUrl: json['success_url'] as String?,
+      returnUrl: json['return_url'] as String?,
+      cancelUrl: json['cancel_url'] as String?,
       paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
           .toList(),
@@ -821,8 +822,9 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
 Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
         CreateCheckoutSessionRequest instance) =>
     <String, dynamic>{
-      'success_url': instance.successUrl,
-      'cancel_url': instance.cancelUrl,
+      if (instance.returnUrl case final value?) 'return_url': value,
+      if (instance.successUrl case final value?) 'success_url': value,
+      if (instance.cancelUrl case final value?) 'cancel_url': value,
       if (_$SessionModeEnumMap[instance.mode] case final value?) 'mode': value,
       if (_$UiModeEnumMap[instance.uiMode] case final value?) 'ui_mode': value,
       if (instance.paymentMethodTypes
