@@ -1,5 +1,12 @@
 part of '../../../messages.dart';
 
+enum RedirectOnCompletion {
+  always,
+  @JsonValue('if_required')
+  ifRequired,
+  never,
+}
+
 enum UiMode {
   /// The Checkout Session will be displayed using embedded components on your website
   custom,
@@ -38,6 +45,10 @@ class CreateCheckoutSessionRequest {
   /// is required if ui_mode is embedded or custom and redirect-based payment
   /// methods are enabled on the session. complete. If you’d like access to the
   final String? returnUrl;
+
+  /// This parameter applies to ui_mode: embedded. Learn more about the
+  /// redirect behavior of embedded sessions. Defaults to always.
+  final RedirectOnCompletion? redirectOnCompletion;
 
   /// The URL to which Stripe should send customers when payment or setup is
   /// complete. If you’d like access to the Checkout Session for the successful
@@ -117,6 +128,7 @@ class CreateCheckoutSessionRequest {
 
   CreateCheckoutSessionRequest({
     this.returnUrl,
+    this.redirectOnCompletion,
     this.successUrl,
     this.cancelUrl,
     this.paymentMethodTypes,

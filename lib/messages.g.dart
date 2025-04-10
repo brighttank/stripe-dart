@@ -787,6 +787,8 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
         Map<String, dynamic> json) =>
     CreateCheckoutSessionRequest(
       returnUrl: json['return_url'] as String?,
+      redirectOnCompletion: $enumDecodeNullable(
+          _$RedirectOnCompletionEnumMap, json['redirect_on_completion']),
       successUrl: json['success_url'] as String?,
       cancelUrl: json['cancel_url'] as String?,
       paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
@@ -825,6 +827,9 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
         CreateCheckoutSessionRequest instance) =>
     <String, dynamic>{
       if (instance.returnUrl case final value?) 'return_url': value,
+      if (_$RedirectOnCompletionEnumMap[instance.redirectOnCompletion]
+          case final value?)
+        'redirect_on_completion': value,
       if (instance.successUrl case final value?) 'success_url': value,
       if (instance.cancelUrl case final value?) 'cancel_url': value,
       if (_$SessionModeEnumMap[instance.mode] case final value?) 'mode': value,
@@ -852,6 +857,12 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
       if (instance.subscriptionData?.toJson() case final value?)
         'subscription_data': value,
     };
+
+const _$RedirectOnCompletionEnumMap = {
+  RedirectOnCompletion.always: 'always',
+  RedirectOnCompletion.ifRequired: 'if_required',
+  RedirectOnCompletion.never: 'never',
+};
 
 const _$SessionModeEnumMap = {
   SessionMode.payment: 'payment',
