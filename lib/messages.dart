@@ -22,6 +22,7 @@ part 'src/messages/price.dart';
 part 'src/messages/product.dart';
 part 'src/messages/refund.dart';
 part 'src/messages/requests/create_checkout_session.dart';
+part 'src/messages/requests/list_checkout_sessions.dart';
 part 'src/messages/requests/create_customer.dart';
 part 'src/messages/requests/create_payment_intent.dart';
 part 'src/messages/requests/create_portal_session.dart';

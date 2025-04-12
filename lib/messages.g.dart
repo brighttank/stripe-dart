@@ -980,6 +980,32 @@ Map<String, dynamic> _$SubscriptionDataToJson(SubscriptionData instance) =>
       if (instance.metadata case final value?) 'metadata': value,
     };
 
+ListCheckoutSessionsRequest _$ListCheckoutSessionsRequestFromJson(
+        Map<String, dynamic> json) =>
+    ListCheckoutSessionsRequest(
+      paymentIntent: json['payment_intent'] as String?,
+      subscription: json['subscription'] as String?,
+      status:
+          $enumDecodeNullable(_$CheckoutSessionStatusEnumMap, json['status']),
+      limit: (json['limit'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$ListCheckoutSessionsRequestToJson(
+        ListCheckoutSessionsRequest instance) =>
+    <String, dynamic>{
+      if (instance.paymentIntent case final value?) 'payment_intent': value,
+      if (instance.subscription case final value?) 'subscription': value,
+      if (_$CheckoutSessionStatusEnumMap[instance.status] case final value?)
+        'status': value,
+      if (instance.limit case final value?) 'limit': value,
+    };
+
+const _$CheckoutSessionStatusEnumMap = {
+  CheckoutSessionStatus.complete: 'complete',
+  CheckoutSessionStatus.expired: 'expired',
+  CheckoutSessionStatus.open: 'open',
+};
+
 CreateCustomerRequest _$CreateCustomerRequestFromJson(
         Map<String, dynamic> json) =>
     CreateCustomerRequest(
