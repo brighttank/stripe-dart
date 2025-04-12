@@ -983,6 +983,7 @@ Map<String, dynamic> _$SubscriptionDataToJson(SubscriptionData instance) =>
 ListCheckoutSessionsRequest _$ListCheckoutSessionsRequestFromJson(
         Map<String, dynamic> json) =>
     ListCheckoutSessionsRequest(
+      customer: json['customer'] as String?,
       paymentIntent: json['payment_intent'] as String?,
       subscription: json['subscription'] as String?,
       status:
@@ -993,6 +994,7 @@ ListCheckoutSessionsRequest _$ListCheckoutSessionsRequestFromJson(
 Map<String, dynamic> _$ListCheckoutSessionsRequestToJson(
         ListCheckoutSessionsRequest instance) =>
     <String, dynamic>{
+      if (instance.customer case final value?) 'customer': value,
       if (instance.paymentIntent case final value?) 'payment_intent': value,
       if (instance.subscription case final value?) 'subscription': value,
       if (_$CheckoutSessionStatusEnumMap[instance.status] case final value?)

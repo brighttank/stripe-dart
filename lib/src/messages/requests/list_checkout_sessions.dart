@@ -14,12 +14,14 @@ class ListCheckoutSessionsRequest {
   /// is required if ui_mode is embedded or custom and redirect-based payment
   /// methods are enabled on the session. complete. If you’d like access to the
   @JsonValue('payment_intent')
+  final String? customer;
   final String? paymentIntent;
   final String? subscription;
   final CheckoutSessionStatus? status;
   final int? limit;
 
   ListCheckoutSessionsRequest({
+    this.customer,
     this.paymentIntent,
     this.subscription,
     this.status,
