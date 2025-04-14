@@ -24,7 +24,9 @@ class CheckoutSessionResource extends Resource<CheckoutSession> {
     final response =
         await get('checkout/sessions', queryParameters: request.toJson());
     return (response['data'] as List<Map>)
-        .map((data) => CheckoutSession.fromJson(data as Map<String, dynamic>))
+        .map((data) {
+          return CheckoutSession.fromJson(data as Map<String, dynamic>);
+        })
         .toList();
   }
 }
