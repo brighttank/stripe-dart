@@ -13,10 +13,13 @@ class ListPricesRequest {
   /// Only return prices for the given product.
   final String? product;
 
+  final int? limit;
+
   ListPricesRequest({
     this.active,
     this.currency,
     this.product,
+    this.limit,
   });
 
   factory ListPricesRequest.fromJson(Map<String, dynamic> json) =>

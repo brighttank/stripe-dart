@@ -7,8 +7,11 @@ class ListProductsRequest {
   /// all inactive products).
   final bool? active;
 
+  final int? limit;
+
   ListProductsRequest({
     this.active,
+    this.limit,
   });
 
   factory ListProductsRequest.fromJson(Map<String, dynamic> json) =>
