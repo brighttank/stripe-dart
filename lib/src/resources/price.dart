@@ -19,6 +19,9 @@ class PriceResource extends Resource<Price> {
         map, (value) => Price.fromJson(value as Map<String, dynamic>));
   }
 
+  Future<void> archive(String id) async =>
+      post('prices/$id', data: {"active": false});
+
   Future<Price> create(CreatePriceRequest request) async {
     final map = await post('prices', data: request.toJson());
     return Price.fromJson(map);
