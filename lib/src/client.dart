@@ -18,10 +18,12 @@ class Client {
   /// Creates a [Dio] client that will make requests to [baseUrl].
   factory Client({
     required String apiKey,
+    Dio? dio,
     String baseUrl = _defaultUrl,
     String version = _defaultVersion,
   }) =>
-      Client.withDio(Dio(), baseUrl: baseUrl, version: version, apiKey: apiKey);
+      Client.withDio(dio ?? Dio(),
+          baseUrl: baseUrl, version: version, apiKey: apiKey);
 
   @visibleForTesting
   Client.withDio(
