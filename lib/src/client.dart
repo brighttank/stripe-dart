@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:stripe/src/exceptions.dart';
 
 const _defaultUrl = 'https://api.stripe.com/v1/';
-const _defaultVersion = '2025-12-15.clover';
+const _defaultVersion = '2025-12-15.clover ';
 
 /// The http client implementation that will make requests to the stripe API.
 ///
@@ -18,12 +18,10 @@ class Client {
   /// Creates a [Dio] client that will make requests to [baseUrl].
   factory Client({
     required String apiKey,
-    Dio? dio,
     String baseUrl = _defaultUrl,
     String version = _defaultVersion,
   }) =>
-      Client.withDio(dio ?? Dio(),
-          baseUrl: baseUrl, version: version, apiKey: apiKey);
+      Client.withDio(Dio(), baseUrl: baseUrl, version: version, apiKey: apiKey);
 
   @visibleForTesting
   Client.withDio(

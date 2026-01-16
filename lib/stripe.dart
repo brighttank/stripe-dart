@@ -1,6 +1,5 @@
 library stripe;
 
-import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:stripe/src/resources/subscription_schedule.dart';
 
@@ -70,14 +69,8 @@ class Stripe {
   /// https://stripe.com/docs/api/balance_transactions
   final BalanceTransactionResource balanceTransaction;
 
-  factory Stripe(
-    String apiKey, {
-    Dio? dio,
-  }) {
-    final client = Client(
-      apiKey: apiKey,
-      dio: dio,
-    );
+  factory Stripe(String apiKey) {
+    final client = Client(apiKey: apiKey);
     return Stripe.withClient(client);
   }
 
