@@ -1096,6 +1096,7 @@ CreatePortalSessionRequest _$CreatePortalSessionRequestFromJson(
         Map<String, dynamic> json) =>
     CreatePortalSessionRequest(
       customer: json['customer'] as String,
+      configuration: json['configuration'] as String?,
       returnUrl: json['return_url'] as String?,
     );
 
@@ -1104,6 +1105,7 @@ Map<String, dynamic> _$CreatePortalSessionRequestToJson(
     <String, dynamic>{
       'customer': instance.customer,
       if (instance.returnUrl case final value?) 'return_url': value,
+      if (instance.configuration case final value?) 'configuration': value,
     };
 
 CreatePriceRequest _$CreatePriceRequestFromJson(Map<String, dynamic> json) =>

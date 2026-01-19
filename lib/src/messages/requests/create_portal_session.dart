@@ -12,8 +12,11 @@ class CreatePortalSessionRequest {
   /// REQUIRED IF THE CONFIGURATION'S DEFAULT RETURN URL IS NOT SET
   final String? returnUrl;
 
+  final String? configuration;
+
   CreatePortalSessionRequest({
     required this.customer,
+    this.configuration,
     this.returnUrl,
   });
 
