@@ -126,6 +126,8 @@ class CreateCheckoutSessionRequest {
   /// Sessions in subscription mode.
   final SubscriptionData? subscriptionData;
 
+  final Map<String, dynamic>? metadata;
+
   CreateCheckoutSessionRequest({
     this.returnUrl,
     this.redirectOnCompletion,
@@ -143,6 +145,7 @@ class CreateCheckoutSessionRequest {
     this.taxIdCollection,
     this.paymentIntentData,
     this.subscriptionData,
+    this.metadata,
   });
 
   factory CreateCheckoutSessionRequest.fromJson(Map<String, dynamic> json) =>

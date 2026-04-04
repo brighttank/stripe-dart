@@ -821,6 +821,7 @@ CreateCheckoutSessionRequest _$CreateCheckoutSessionRequestFromJson(
           ? null
           : SubscriptionData.fromJson(
               json['subscription_data'] as Map<String, dynamic>),
+      metadata: json['metadata'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
@@ -856,6 +857,7 @@ Map<String, dynamic> _$CreateCheckoutSessionRequestToJson(
         'payment_intent_data': value,
       if (instance.subscriptionData?.toJson() case final value?)
         'subscription_data': value,
+      if (instance.metadata case final value?) 'metadata': value,
     };
 
 const _$RedirectOnCompletionEnumMap = {
